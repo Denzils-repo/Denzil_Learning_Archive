@@ -12,6 +12,12 @@ int main(){
 	char word='a';
 	double d=1.9876542;
 	
+	//pointers
+	int num1=50;
+	int *num1_ptr=&num1;
+	printf("The num1 variable holds the value: %d\n",num1);
+	printf("It is being stored at the adderss: %d\n\n",num1_ptr);
+	
 	//functions
 	printf("The sum of a and b is: %d\n",add_nums(a,b));
 	
