@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+
+@font-face {
+  font-family: 'Hoshiko Satsuki';
+  src: url('/fonts/hoshiko_satsuki/Hoshiko Satsuki.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Reset defaults */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden; /* avoid scrollbar-gutter changes shifting the viewport between snapshots */
+}
+
+/* Base layouts for the pages */
+.page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  transition: background-color 0.3s ease;
+}
+
+.white-bg {
+  background-color: #faf9f6;
+  color: #161513;
+}
+
+.black-bg {
+  background-color: #0b0b0c;
+  color: #f2f1ee;
+}
+
+.content {
+  text-align: center;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  view-transition-name: text-content; /* enables crossfade animation */
+}
+
+.glyph-anchor {
+  display: inline-block;
+  margin-bottom: 1.25rem;
+  view-transition-name: glyph; /* animate this element as its own group */
+  transform: rotate(0deg);
+  transition: transform 0.6s ease-in-out;
+}
+
+.black-bg .glyph-anchor {
+  transform: rotate(180deg);
+}
+
+
+.glyph {
+  display: block;
+}
+
+.glyph-bg-light {
+  fill: #faf9f6;
+  stroke: #17161a;
+  stroke-width: 1.5;
+}
+
+.glyph-bg-dark {
+  fill: #0b0b0c;
+  stroke: #f2f1ee;
+  stroke-width: 1.5;
+}
+
+.glyph-fill-dark {
+  fill: #17161a;
+}
+
+.glyph-fill-light {
+  fill: #f2f1ee;
+}
+
+.eyebrow {
+  font-family: 'Hoshiko Satsuki', cursive;
+  font-size: 2.4rem;
+  text-transform: none;
+  letter-spacing: normal;
+  opacity: 0.9;
+  margin-bottom: 1.25rem;
+}
+
+h1 {
+  font-size: 2.6rem;
+  font-weight: 500;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+  color: currentColor; /* Inherit the text color of the parent container */
+}
+
+.lede {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 300;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  opacity: 0.85;
+  margin-bottom: 1.5rem;
+}
+
+.traits {
+  display: flex;
+  gap: 0.75rem;
+  list-style: none;
+  margin-bottom: 2rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.traits li {
+  border: 1px solid currentColor;
+  border-radius: 30px;
+  padding: 0.35rem 0.9rem;
+  opacity: 0.75;
+}
+
+button {
+  font-family: 'JetBrains Mono', monospace;
+  padding: 12px 24px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: 1.5px solid currentColor;
+  background: transparent;
+  color: inherit;
+  border-radius: 30px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  opacity: 0.85;
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.arrow {
+  display: inline-block;
+  margin-left: 0.35rem;
+  transition: transform 0.2s ease;
+}
+
+button:hover .arrow {
+  transform: translateX(3px);
+}
+
+
+/* The View Transitions API Overrides */
+/* Turn off Chrome's default crossfade + plus-lighter blend (that blend mode
+   is what was washing out dark text over the light page). We drive the
+   reveal ourselves via a clip-path circle animated from App.jsx instead. */
+::view-transition-group(root) {
+  animation-duration: 0.6s;
+}
+
+::view-transition-old(root) {
+  animation: none;
+  mix-blend-mode: normal;
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+  z-index: 2;
+}
