@@ -1,1 +1,4 @@
 *.exe
+*.skills-cache
+*.skills-loaded.json
+*.antigravityignore
