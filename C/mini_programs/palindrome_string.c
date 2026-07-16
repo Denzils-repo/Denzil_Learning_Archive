@@ -8,7 +8,7 @@ int main(){
     	printf("you need atleast to make a palindrome!");
     	exit(0);
 	}
-    char mystr[size];
+    char mystr[size+1];
     printf("enter a %d letter word: ",size);
     scanf("%s",mystr);
     int i;
