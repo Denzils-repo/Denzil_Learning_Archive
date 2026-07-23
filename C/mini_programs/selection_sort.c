@@ -2,14 +2,18 @@
 int main(){
     int n=5;
     int nums[]={88,91,1,1,0};
-    int i,j;
-    for(i=0;i<n;i++){
-        for(j=i;j<n;j++){
-            if(nums[i]>nums[j]){
-                int temp=nums[i];
-                nums[i]=nums[j];
-                nums[j]=temp;
+    int i,j,min,temp;
+    for(i=0;i<n-1;i++){
+        min=i;
+        for(j=i+1;j<n;j++){
+            if(nums[j]<nums[min]){
+                min=j;
             }
+        }
+        if(min!=i){
+            temp=nums[i];
+            nums[i]=nums[min];
+            nums[min]=temp;
         }
     }
     for(i=0;i<n;i++){
